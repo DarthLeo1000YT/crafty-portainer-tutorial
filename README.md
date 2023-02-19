@@ -1,1 +1,21 @@
-# crafty-portainer-tutorial
+version: '3'
+
+services:
+  crafty:
+    container_name: crafty_container
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    restart: always
+    environment:
+      - TZ=Etc/UTC
+    ports:
+      - "8000:8000"  # HTTP
+      - "8443:8443"  # HTTPS
+      - "8123:8123"  # DYNMAP
+      - "19132:19132/udp"  # BEDROCK
+      - "25500-25600:25500-25600"  # MC SERV PORT RANGE
+    volumes:
+      - /portainer/Files/AppData/Config/Crafty4/backups:/crafty/backups
+      - /portainer/Files/AppData/Config/Crafty4/logs:/crafty/logs
+      - /portainer/Files/AppData/Config/Crafty4/servers:/crafty/servers
+      - /portainer/Files/AppData/Config/Crafty4/config:/crafty/app/config
+      - /portainer/Files/AppData/Config/Crafty4/import:/crafty/import
