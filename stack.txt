@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       - TZ=Etc/UTC
-    ports:
+    ports: # Make sure to edit this for your needs
       - "8000:8000"  # HTTP
       - "8443:8443"  # HTTPS
       - "8123:8123"  # DYNMAP
